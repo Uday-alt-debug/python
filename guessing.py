@@ -1,27 +1,31 @@
 import random
-import math
 
-lower=int(input("Enter the Lower BOund number:-"))
-upper=int(input("Enter the upper bound number:-"))
+while True:
+    lower = int(input("Enter the Lower Bound number: "))
+    upper = int(input("Enter the Upper Bound number: "))
 
-number=random.randint(lower,upper)
+    number = random.randint(lower, upper)
+    chance = 6
 
-guess=0
-chance=6
+    while chance > 0:
+        guess = int(input("Enter your guess: "))
+        
+        if guess < number:
+            print("Your guess is too low.")
+        elif guess > number:
+            print("Your guess is too high.")
+        else:
+            print("Congratulations! You've guessed the correct number!")
+            break
 
-while guess!=number :
-    guess=int(input("Enter the Guess number:"))
+        chance -= 1
+        if chance > 0:
+            print(f"You have {chance} chances left.")
+        else:
+            print(f"Your chances are completed. The correct number was: {number}")
 
-    if(guess<number):
-        print("Your Guss is to Low")
-    elif(guess>number):
-        print("Your Guess is to High")
-    else:
-        print("YOU ARE CORRECT")
-
-    chance -=1
-
-    if chance>0:
-        print(chance,"you have left")
-    else:
-        print("Your Chances Are Completed ,The Correct number is:",number)
+  
+    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+    if play_again != 'yes':
+        print("Thank you for playing!")
+        break
